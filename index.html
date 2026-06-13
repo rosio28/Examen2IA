@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen RNA - Chirinos Ticona Masiel Rosio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:linear-gradient(135deg,#0a0a2e 0%,#1a1a4e 50%,#0d0d3d 100%);min-height:100vh;font-family:'Inter',sans-serif;color:#fff;}
+.hero{text-align:center;padding:48px 20px 32px;background:linear-gradient(180deg,rgba(0,0,200,0.15),transparent);}
+.hero-title{font-size:13px;letter-spacing:4px;color:#7cb9ff;text-transform:uppercase;margin-bottom:12px;}
+.hero-name{font-size:clamp(22px,4vw,38px);font-weight:700;color:#ffd600;text-shadow:0 0 20px rgba(255,214,0,0.6),0 0 40px rgba(255,214,0,0.3);margin-bottom:8px;line-height:1.2;letter-spacing:1px;}
+.hero-sub{color:#90caf9;font-size:14px;margin-bottom:6px;}
+.hero-topic{font-size:clamp(16px,2.5vw,22px);color:#fff;font-weight:600;margin-top:16px;padding:12px 24px;background:rgba(255,255,255,0.08);border-radius:12px;display:inline-block;border:1px solid rgba(255,255,255,0.15);}
+.nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:16px;background:rgba(0,0,0,0.3);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);}
+.nav button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#cce;padding:7px 14px;border-radius:20px;cursor:pointer;font-size:12px;transition:all .2s;}
+.nav button:hover,.nav button.active{background:rgba(79,195,247,0.3);border-color:#4fc3f7;color:#fff;}
+.section{max-width:900px;margin:24px auto;padding:0 16px;}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;margin-bottom:24px;}
+.card-title{font-size:20px;font-weight:700;color:#4fc3f7;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.card-title .icon{width:36px;height:36px;border-radius:50%;background:rgba(79,195,247,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.hw{font-family:'Caveat',cursive;font-size:18px;line-height:1.9;color:#e8f4fd;}
+.formula{font-family:'Caveat',cursive;font-size:20px;color:#81d4fa;background:rgba(129,212,250,0.08);border-left:3px solid #4fc3f7;padding:8px 16px;margin:8px 0 8px 20px;border-radius:0 8px 8px 0;}
+.formula.red{color:#ff8a80;border-left-color:#ff5252;background:rgba(255,82,82,0.08);}
+.formula.green{color:#a5d6a7;border-left-color:#66bb6a;background:rgba(102,187,106,0.08);}
+.tag-red{color:#ff8a80;font-weight:700;}
+.tag-green{color:#a5d6a7;font-weight:700;}
+.tag-blue{color:#4fc3f7;font-weight:700;}
+table{width:100%;border-collapse:collapse;font-family:'Caveat',cursive;font-size:16px;margin:12px 0;}
+th{background:rgba(79,195,247,0.2);color:#4fc3f7;padding:8px 10px;border:1px solid rgba(79,195,247,0.3);text-align:left;}
+td{padding:7px 10px;border:1px solid rgba(255,255,255,0.1);color:#e0e0e0;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.03);}
+td.center{text-align:center;}
+td.red{color:#ff8a80;}
+td.green{color:#a5d6a7;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.grid2{grid-template-columns:1fr;}}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;}
+.badge-red{background:rgba(255,82,82,0.2);color:#ff8a80;border:1px solid rgba(255,82,82,0.4);}
+.badge-green{background:rgba(102,187,106,0.2);color:#a5d6a7;border:1px solid rgba(102,187,106,0.4);}
+.result-box{border-radius:16px;padding:24px;text-align:center;margin-top:16px;}
+.result-box.toxico{background:linear-gradient(135deg,rgba(255,82,82,0.2),rgba(255,0,0,0.05));border:2px solid rgba(255,82,82,0.5);}
+.result-box.notoxico{background:linear-gradient(135deg,rgba(102,187,106,0.2),rgba(0,200,0,0.05));border:2px solid rgba(102,187,106,0.5);}
+.result-num{font-size:48px;font-weight:700;font-family:'Caveat',cursive;}
+.result-label{font-size:22px;font-weight:700;margin-top:8px;}
+.step-flow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin:16px 0;}
+.step-box{background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.3);border-radius:10px;padding:10px 14px;font-size:13px;text-align:center;min-width:90px;}
+.step-box span{display:block;font-size:11px;color:#90caf9;margin-bottom:4px;}
+.arrow-r{font-size:20px;color:#4fc3f7;}
+.svg-wrap{overflow-x:auto;margin:12px 0;}
+.bar-wrap{margin:8px 0;}
+.bar-label{font-family:'Caveat',cursive;font-size:15px;margin-bottom:4px;}
+.bar-track{height:28px;background:rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:14px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;transition:width 1s ease;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-title">Sistemas Inteligentes · Red Neuronal Artificial</div>
+  <div class="hero-name">REALIZADO POR LA ESTUDIANTE<br>CHIRINOS TICONA MASIEL ROSIO</div>
+  <div class="hero-sub">Examen Resuelto Paso a Paso</div>
+  <div class="hero-topic">Diseño de una RNA para Identificar<br>Personas Tóxicas en Pareja</div> <br>
+<div style="margin-top:20px;padding:12px 28px;background:rgba(255,214,0,0.12);border:2px solid #ffd600;border-radius:30px;display:inline-block;font-size:15px;color:#ffd600;font-weight:600;letter-spacing:1px;animation:pulse 2s infinite;">
+  USE LOS BOTONES PARA NAVEGAR POR EL EXAMEN
+</div>
+</div>
+
+<div class="nav">
+  <button class="active" onclick="show('s1',this)">📋 Enunciado</button>
+  <button onclick="show('s2',this)">🏗️ Arquitectura</button>
+  <button onclick="show('s3',this)">⚖️ Pesos</button>
+  <button onclick="show('s4',this)">📏 Escala</button>
+  <button onclick="show('s5',this)">⚠️ Ej. Tóxico</button>
+  <button onclick="show('s6',this)">✅ Ej. NO Tóxico</button>
+  <button onclick="show('s7',this)">🧠 Diagrama RNA</button>
+  <button onclick="show('s8',this)">🔄 Flujo Final</button>
+</div>
+
+<!-- S1 -->
+<div id="s1" class="section">
+  <div class="card">
+    <div class="card-title"><div class="icon">📋</div>Enunciado y Contexto</div>
+    <div class="hw">
+      Se elabora el diseño de un sistema inteligente (RNA) para identificar si una persona tiene comportamientos tóxicos en una relación de pareja.<br><br>
+      El cuestionario tiene <span class="tag-blue">15 preguntas</span> con escala numérica del <span class="tag-blue">0 al 10</span>.<br>
+      Cada respuesta Xᵢ se normaliza al rango [0,1] dividiendo entre 10.<br><br>
+      <span class="tag-red">✱ Todas las preguntas son directas:</span> respuesta alta = mayor toxicidad.<br>
+      <span class="tag-green">✱ NO existen preguntas invertidas.</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><div class="icon">❓</div>Las 15 Preguntas</div>
+    <table>
+      <tr><th>Nº</th><th>Pregunta</th><th>Sentido</th><th>Signo</th></tr>
+      <tr><td class="center">1</td><td>Dificultad para aceptar opiniones distintas de mi pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">2</td><td>Me gusta controlar con quién se relaciona mi pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">3</td><td>Siento celos intensos aunque sea de forma inocente.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">4</td><td>Requiero que mi pareja informe constantemente sus actividades.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">5</td><td>Prefiero imponer mi opinión en decisiones de pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">6</td><td>Minimizo o ignoro los sentimientos de mi pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">7</td><td>Uso sarcasmo o críticas destructivas como "broma".</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">8</td><td>Me cuesta reconocer mis errores o pedir disculpas.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">9</td><td>Tengo expectativas poco realistas sobre mi pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">10</td><td>Mi pareja debe adaptarse a mis gustos en todo.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">11</td><td>Creo merecer trato especial y justifico comportamiento hiriente.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">12</td><td>Me molesta que mi pareja pase tiempo sin mí.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">13</td><td>Reacciono exagerado ante críticas constructivas.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">14</td><td>Insisto en tener razón aunque hiera a mi pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+      <tr><td class="center">15</td><td>Me siento justificado sin considerar el impacto en mi pareja.</td><td>Alta=Tóxico</td><td class="center red">+</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- S2 -->
+<div id="s2" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">🏗️</div>Arquitectura de la RNA</div>
+    <div class="grid2" style="margin-bottom:16px;">
+      <div style="background:rgba(79,195,247,0.08);border:1px solid rgba(79,195,247,0.3);border-radius:12px;padding:16px;">
+        <div style="color:#4fc3f7;font-weight:700;margin-bottom:8px;">Capa 0 — Entrada</div>
+        <div class="hw">15 nodos · recibe Xᵢ ∈ [0,10] · uno por pregunta</div>
+      </div>
+      <div style="background:rgba(129,212,250,0.08);border:1px solid rgba(129,212,250,0.3);border-radius:12px;padding:16px;">
+        <div style="color:#81d4fa;font-weight:700;margin-bottom:8px;">Capa 1 — Oculta</div>
+        <div class="hw">15 neuronas · normaliza · yᵢ = Xᵢ/10 ∈ [0,1]</div>
+      </div>
+    </div>
+    <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:12px;padding:16px;margin-bottom:16px;">
+      <div style="color:#ff8a80;font-weight:700;margin-bottom:8px;">Capa 2 — Salida</div>
+      <div class="hw">1 neurona final · agrega 15 yᵢ con Vᵢ=1/15 · produce y ∈ [0,1]</div>
+    </div>
+    <div class="hw"><span class="tag-red">✱ Normalización</span></div>
+    <div class="formula">Xᵢ' = Xᵢ / 10 → convierte [0,10] a [0,1]</div>
+    <div class="hw"><span class="tag-red">✱ Todas directas → sin inversión</span></div>
+    <div class="formula green">Xᵢ'' = Xᵢ' (no se invierte ninguna)</div>
+    <div class="hw"><span class="tag-red">✱ Salida neurona individual</span></div>
+    <div class="formula">yᵢ = Xᵢ'' (valor normalizado directo)</div>
+    <div style="background:rgba(255,200,0,0.07);border:1px solid rgba(255,220,0,0.3);border-radius:10px;padding:14px;margin:12px 0;font-family:'Caveat',cursive;font-size:17px;">
+      <span style="color:#ffee58;">⚠ ¿Por qué NO sigmoide individual?</span><br>
+      Xᵢ''=0.9 → Z=0.09 → σ(0.09)=0.522 ≈ 0.5 ✗<br>
+      Xᵢ''=0.1 → Z=0.01 → σ(0.01)=0.502 ≈ 0.5 ✗<br>
+      <span style="color:#ff8a80;">→ Sin discriminación entre respuestas altas y bajas</span><br>
+      <span style="color:#a5d6a7;">→ yᵢ = Xᵢ'' da rango real [0,1] ✓</span>
+    </div>
+    <div class="hw"><span class="tag-red">✱ Neurona final</span></div>
+    <div class="formula">Vᵢ = 1/15 ≈ 0.067</div>
+    <div class="formula">y = (1/15) · Σᵢ₌₁¹⁵ yᵢ</div>
+    <div class="hw"><span class="tag-red">✱ Decisión</span></div>
+    <div class="formula red">y ≥ 0.5 → TÓXICO</div>
+    <div class="formula green">y < 0.5 → NO TÓXICO</div>
+  </div>
+</div>
+
+<!-- S3 -->
+<div id="s3" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">⚖️</div>Tabla de Pesos Formales</div>
+    <div class="hw"><span class="tag-red">Pesos Capa Oculta (Wᵢ):</span></div>
+    <div class="formula">Wᵢ = 1/10 = 0.1 para todas las neuronas ocultas</div>
+    <div class="hw"><span class="tag-red">Pesos Capa Salida (Vᵢ):</span></div>
+    <div class="formula">Vᵢ = 1/15 ≈ 0.067 para i = 1,...,15</div>
+    <br>
+    <table>
+      <tr><th>i</th><th>Pregunta</th><th>Wᵢ</th><th>Vᵢ</th></tr>
+      <tr><td>1</td><td>Dificultad opiniones</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>2</td><td>Control relaciones</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>3</td><td>Celos excesivos</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>4</td><td>Necesidad info</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>5</td><td>Imposición decisiones</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>6</td><td>Desestimación sent.</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>7</td><td>Críticas y sarcasmo</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>8</td><td>Reconocer errores</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>9</td><td>Expectativas irreales</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>10</td><td>Control cotidiano</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>11</td><td>Merecimiento</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>12</td><td>Rechazo independencia</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>13</td><td>Aceptar críticas</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>14</td><td>Intransigencia</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+      <tr><td>15</td><td>Negación impacto</td><td class="center">0.1</td><td class="center">0.067</td></tr>
+    </table>
+    <div class="formula green">Verificación: Σ Vᵢ = 15 × (1/15) = 1.0 ✓</div>
+    <br>
+    <table>
+      <tr><th>Capa</th><th>Nodos</th><th>Función</th><th>Salida</th></tr>
+      <tr><td>Entrada</td><td class="center">15</td><td>Recibe Xᵢ ∈ [0,10]</td><td>Xᵢ crudo</td></tr>
+      <tr><td>Oculta</td><td class="center">15</td><td>yᵢ = Xᵢ/10</td><td>yᵢ ∈ [0,1]</td></tr>
+      <tr><td>Salida</td><td class="center">1</td><td>y = Σ Vᵢ·yᵢ</td><td>y ∈ [0,1]</td></tr>
+    </table>
+    <div class="formula">Total parámetros RNA: 30 pesos (15 Wᵢ + 15 Vᵢ)</div>
+  </div>
+</div>
+
+<!-- S4 -->
+<div id="s4" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">📏</div>Escala Likert y Estándares</div>
+    <table>
+      <tr><th>Categoría</th><th>Valor</th><th>% Toxicidad</th><th>Wᵢ</th></tr>
+      <tr><td>a) Nunca</td><td class="center">0</td><td class="center green">0%</td><td class="center">0.00</td></tr>
+      <tr><td>b) A veces</td><td class="center">2–3</td><td class="center">25%</td><td class="center">0.25</td></tr>
+      <tr><td>c) Frecuentemente</td><td class="center">5</td><td class="center">50%</td><td class="center">0.50</td></tr>
+      <tr><td>d) Casi siempre</td><td class="center">7–8</td><td class="center">75%</td><td class="center">0.75</td></tr>
+      <tr><td>e) Siempre</td><td class="center">10</td><td class="center red">100%</td><td class="center">1.00</td></tr>
+    </table>
+    <div class="formula">Escala 0–10: Wᵢ = Xᵢ / 10</div>
+    <br>
+    <div class="hw" style="margin-bottom:12px;"><span class="tag-blue">Niveles de toxicidad:</span></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:100px;background:rgba(102,187,106,0.15);border:1px solid #66bb6a;border-radius:8px;padding:10px;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:#a5d6a7;">0–2<br>Muy Bajo<br>No tóxico</div>
+      <div style="flex:1;min-width:100px;background:rgba(255,235,59,0.1);border:1px solid #ffee58;border-radius:8px;padding:10px;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:#fff176;">3–4<br>Bajo<br>Tendencia</div>
+      <div style="flex:1;min-width:100px;background:rgba(255,152,0,0.15);border:1px solid #ffa726;border-radius:8px;padding:10px;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:#ffcc80;">5–6<br>Medio<br>Alerta</div>
+      <div style="flex:1;min-width:100px;background:rgba(244,67,54,0.15);border:1px solid #ef5350;border-radius:8px;padding:10px;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:#ff8a80;">7–8<br>Alto<br>Tóxico</div>
+      <div style="flex:1;min-width:100px;background:rgba(183,28,28,0.3);border:1px solid #c62828;border-radius:8px;padding:10px;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:#ff5252;">9–10<br>Muy Alto<br>Muy Tóxico</div>
+    </div>
+  </div>
+</div>
+
+<!-- S5 -->
+<div id="s5" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">⚠️</div>Ejemplo 1 — Persona Tóxica</div>
+    <div class="hw">Respuestas del encuestado (escala 0–10):</div><br>
+    <table>
+      <tr><th>i</th><th>Pregunta</th><th>Xᵢ</th><th>Xᵢ'=Xᵢ/10</th><th>Invertida</th><th>Xᵢ''</th></tr>
+      <tr><td>1</td><td>Dificultad opiniones</td><td class="center">8</td><td class="center">0.8</td><td class="center green">NO</td><td class="center red">0.8</td></tr>
+      <tr><td>2</td><td>Control relaciones</td><td class="center">7</td><td class="center">0.7</td><td class="center green">NO</td><td class="center red">0.7</td></tr>
+      <tr><td>3</td><td>Celos excesivos</td><td class="center">9</td><td class="center">0.9</td><td class="center green">NO</td><td class="center red">0.9</td></tr>
+      <tr><td>4</td><td>Necesidad info</td><td class="center">6</td><td class="center">0.6</td><td class="center green">NO</td><td class="center red">0.6</td></tr>
+      <tr><td>5</td><td>Imposición decisiones</td><td class="center">7</td><td class="center">0.7</td><td class="center green">NO</td><td class="center red">0.7</td></tr>
+      <tr><td>6</td><td>Desestimación sent.</td><td class="center">5</td><td class="center">0.5</td><td class="center green">NO</td><td class="center red">0.5</td></tr>
+      <tr><td>7</td><td>Críticas y sarcasmo</td><td class="center">8</td><td class="center">0.8</td><td class="center green">NO</td><td class="center red">0.8</td></tr>
+      <tr><td>8</td><td>Reconocer errores</td><td class="center">9</td><td class="center">0.9</td><td class="center green">NO</td><td class="center red">0.9</td></tr>
+      <tr><td>9</td><td>Expectativas irreales</td><td class="center">6</td><td class="center">0.6</td><td class="center green">NO</td><td class="center red">0.6</td></tr>
+      <tr><td>10</td><td>Control cotidiano</td><td class="center">7</td><td class="center">0.7</td><td class="center green">NO</td><td class="center red">0.7</td></tr>
+      <tr><td>11</td><td>Merecimiento</td><td class="center">5</td><td class="center">0.5</td><td class="center green">NO</td><td class="center red">0.5</td></tr>
+      <tr><td>12</td><td>Rechazo independencia</td><td class="center">8</td><td class="center">0.8</td><td class="center green">NO</td><td class="center red">0.8</td></tr>
+      <tr><td>13</td><td>Aceptar críticas</td><td class="center">7</td><td class="center">0.7</td><td class="center green">NO</td><td class="center red">0.7</td></tr>
+      <tr><td>14</td><td>Intransigencia</td><td class="center">9</td><td class="center">0.9</td><td class="center green">NO</td><td class="center red">0.9</td></tr>
+      <tr><td>15</td><td>Negación impacto</td><td class="center">6</td><td class="center">0.6</td><td class="center green">NO</td><td class="center red">0.6</td></tr>
+    </table>
+    <br>
+    <div class="formula">Σ Xᵢ'' = 0.8+0.7+0.9+0.6+0.7+0.5+0.8+0.9+0.6+0.7+0.5+0.8+0.7+0.9+0.6 = 10.7</div>
+    <div class="formula">y = (1/15) · 10.7 = 0.067 · 10.7 = <b>0.713</b></div>
+    <div class="formula">0.713 × 100 = <b>71.3%</b> ✓</div>
+    <div class="result-box toxico">
+      <div class="result-num" style="color:#ff5252;">71.3%</div>
+      <div class="result-label" style="color:#ff8a80;">⚠ PERSONA TÓXICA</div>
+      <div style="color:#ffcdd2;margin-top:8px;font-size:14px;">y = 0.713 ≥ 0.5</div>
+    </div>
+    <br>
+    <div class="hw" style="margin-bottom:8px;"><span class="tag-blue">Gráfica de valores por pregunta:</span></div>
+    <div class="svg-wrap">
+    <svg width="620" height="200" viewBox="0 0 620 200" id="chart1"></svg>
+    </div>
+  </div>
+</div>
+
+<!-- S6 -->
+<div id="s6" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Ejemplo 2 — Persona NO Tóxica</div>
+    <div class="hw">Respuestas bajas (1–3):</div><br>
+    <table>
+      <tr><th>i</th><th>Pregunta</th><th>Xᵢ</th><th>Xᵢ'</th><th>Xᵢ''</th></tr>
+      <tr><td>1</td><td>Dificultad opiniones</td><td class="center">2</td><td class="center">0.2</td><td class="center green">0.2</td></tr>
+      <tr><td>2</td><td>Control relaciones</td><td class="center">1</td><td class="center">0.1</td><td class="center green">0.1</td></tr>
+      <tr><td>3</td><td>Celos excesivos</td><td class="center">2</td><td class="center">0.2</td><td class="center green">0.2</td></tr>
+      <tr><td>4</td><td>Necesidad info</td><td class="center">3</td><td class="center">0.3</td><td class="center green">0.3</td></tr>
+      <tr><td>5</td><td>Imposición decisiones</td><td class="center">1</td><td class="center">0.1</td><td class="center green">0.1</td></tr>
+      <tr><td>6</td><td>Desestimación sent.</td><td class="center">2</td><td class="center">0.2</td><td class="center green">0.2</td></tr>
+      <tr><td>7</td><td>Críticas y sarcasmo</td><td class="center">1</td><td class="center">0.1</td><td class="center green">0.1</td></tr>
+      <tr><td>8</td><td>Reconocer errores</td><td class="center">2</td><td class="center">0.2</td><td class="center green">0.2</td></tr>
+      <tr><td>9</td><td>Expectativas irreales</td><td class="center">3</td><td class="center">0.3</td><td class="center green">0.3</td></tr>
+      <tr><td>10</td><td>Control cotidiano</td><td class="center">1</td><td class="center">0.1</td><td class="center green">0.1</td></tr>
+      <tr><td>11</td><td>Merecimiento</td><td class="center">2</td><td class="center">0.2</td><td class="center green">0.2</td></tr>
+      <tr><td>12</td><td>Rechazo independencia</td><td class="center">1</td><td class="center">0.1</td><td class="center green">0.1</td></tr>
+      <tr><td>13</td><td>Aceptar críticas</td><td class="center">2</td><td class="center">0.2</td><td class="center green">0.2</td></tr>
+      <tr><td>14</td><td>Intransigencia</td><td class="center">1</td><td class="center">0.1</td><td class="center green">0.1</td></tr>
+      <tr><td>15</td><td>Negación impacto</td><td class="center">3</td><td class="center">0.3</td><td class="center green">0.3</td></tr>
+    </table>
+    <br>
+    <div class="formula">Σ Xᵢ'' = 2.7</div>
+    <div class="formula">y = (1/15) · 2.7 = <b>0.180</b></div>
+    <div class="formula">0.180 × 100 = <b>18.0%</b> ✓</div>
+    <div class="result-box notoxico">
+      <div class="result-num" style="color:#a5d6a7;">18.0%</div>
+      <div class="result-label" style="color:#a5d6a7;">✓ PERSONA NO TÓXICA</div>
+      <div style="color:#c8e6c9;margin-top:8px;font-size:14px;">y = 0.180 &lt; 0.5</div>
+    </div>
+    <br>
+    <div class="svg-wrap">
+    <svg width="620" height="200" viewBox="0 0 620 200" id="chart2"></svg>
+    </div>
+  </div>
+</div>
+
+<!-- S7 -->
+<div id="s7" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">🧠</div>Diagrama Completo de la RNA</div>
+    <div class="svg-wrap">
+    <svg width="660" height="520" viewBox="0 0 660 520" id="rnasvg"></svg>
+    </div>
+    <div class="formula">Estructura: 15 → 15 → 1</div>
+    <div class="formula">Wᵢ = 0.1 (oculta) · Vᵢ = 0.067 (salida)</div>
+    <div class="formula">Total parámetros: 30</div>
+  </div>
+</div>
+
+<!-- S8 -->
+<div id="s8" class="section" style="display:none">
+  <div class="card">
+    <div class="card-title"><div class="icon">🔄</div>Flujo Completo del Sistema</div>
+    <div class="step-flow">
+      <div class="step-box"><span>Paso 1</span>Encuestado<br>responde<br>Xᵢ [0–10]</div>
+      <div class="arrow-r">→</div>
+      <div class="step-box"><span>Paso 2</span>Normaliza<br>Xᵢ'=Xᵢ/10</div>
+      <div class="arrow-r">→</div>
+      <div class="step-box"><span>Paso 3</span>¿Invertida?<br>NO→Xᵢ''=Xᵢ'</div>
+      <div class="arrow-r">→</div>
+      <div class="step-box"><span>Paso 4</span>Capa oculta<br>yᵢ = Xᵢ''</div>
+      <div class="arrow-r">→</div>
+      <div class="step-box"><span>Paso 5</span>Salida<br>y=(1/15)·Σyᵢ</div>
+      <div class="arrow-r">→</div>
+      <div class="step-box" style="border-color:#ff8a80;"><span>Paso 6</span>y≥0.5 TÓXICO<br>y&lt;0.5 NO</div>
+    </div>
+    <br>
+    <div class="card-title" style="font-size:16px;"><div class="icon">📊</div>Comparación Ejemplos</div>
+    <table>
+      <tr><th>Concepto</th><th style="color:#ff8a80;">Ej. Tóxico</th><th style="color:#a5d6a7;">Ej. NO Tóxico</th></tr>
+      <tr><td>Respuestas</td><td class="center">5–9</td><td class="center">1–3</td></tr>
+      <tr><td>Σ Xᵢ''</td><td class="center">10.7</td><td class="center">2.7</td></tr>
+      <tr><td>y</td><td class="center red">0.713</td><td class="center green">0.180</td></tr>
+      <tr><td>%</td><td class="center red">71.3%</td><td class="center green">18.0%</td></tr>
+      <tr><td>Resultado</td><td class="center"><span class="badge badge-red">TÓXICO ⚠</span></td><td class="center"><span class="badge badge-green">NO TÓXICO ✓</span></td></tr>
+    </table>
+    <br>
+    <div class="bar-wrap">
+      <div class="bar-label" style="color:#ff8a80;">Tóxico: 71.3%</div>
+      <div class="bar-track"><div class="bar-fill" style="width:71.3%;background:linear-gradient(90deg,#ff5252,#ff8a80);">71.3%</div></div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-label" style="color:#a5d6a7;">No Tóxico: 18.0%</div>
+      <div class="bar-track"><div class="bar-fill" style="width:18%;background:linear-gradient(90deg,#66bb6a,#a5d6a7);">18.0%</div></div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-label" style="color:#ffee58;">Umbral: 50%</div>
+      <div class="bar-track"><div class="bar-fill" style="width:50%;background:rgba(255,238,88,0.5);">50%</div></div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:20px;color:#90caf9;font-family:'Caveat',cursive;font-size:16px;">
+    Elaborado por: Chirinos Ticona Masiel Rosio · Sistemas Inteligentes · RNA
+  </div>
+</div>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  document.getElementById(id).style.display='block';
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top:120,behavior:'smooth'});
+  if(id==='s5') drawChart('chart1',[0.8,0.7,0.9,0.6,0.7,0.5,0.8,0.9,0.6,0.7,0.5,0.8,0.7,0.9,0.6]);
+  if(id==='s6') drawChart('chart2',[0.2,0.1,0.2,0.3,0.1,0.2,0.1,0.2,0.3,0.1,0.2,0.1,0.2,0.1,0.3]);
+  if(id==='s7') drawRNA();
+}
+
+function drawChart(id,vals){
+  var svg=document.getElementById(id);
+  svg.innerHTML='';
+  var W=620,H=200,pad=34,bw=36,gap=4;
+  // fondo
+  var bg=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bg.setAttribute('width',W);bg.setAttribute('height',H);
+  bg.setAttribute('fill','rgba(255,255,255,0.03)');bg.setAttribute('rx','8');
+  svg.appendChild(bg);
+  // ejes
+  line(svg,pad,10,pad,165,'rgba(255,255,255,0.3)');
+  line(svg,pad,165,W-10,165,'rgba(255,255,255,0.3)');
+  // umbral
+  line(svg,pad,82,W-10,82,'#ffee58',1,'4');
+  txt(svg,2,86,'0.5','#ffee58',11);
+  txt(svg,4,170,'0','#aaa',11);
+  txt(svg,4,14,'1.0','#aaa',11);
+  vals.forEach(function(v,i){
+    var x=pad+4+i*(bw+gap);
+    var h=v*155;
+    var y=165-h;
+    var color=v>=0.5?'rgba(255,82,82,0.85)':'rgba(102,187,106,0.85)';
+    var r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('x',x);r.setAttribute('y',y);
+    r.setAttribute('width',bw);r.setAttribute('height',h);
+    r.setAttribute('fill',color);r.setAttribute('rx','3');
+    svg.appendChild(r);
+    txt(svg,x+bw/2,H-4,(i+1),'#aaa',11,'middle');
+    txt(svg,x+bw/2,y-3,v,'#fff',10,'middle');
+  });
+}
+
+function drawRNA(){
+  var svg=document.getElementById('rnasvg');
+  svg.innerHTML='';
+  var n=15,ys=30,yg=30;
+  txt(svg,30,16,'Capa Entrada','#4fc3f7',14);
+  txt(svg,270,16,'Capa Oculta','#81d4fa',14);
+  txt(svg,530,16,'Salida','#ff8a80',14);
+  for(var i=0;i<n;i++){
+    var cy=ys+i*yg;
+    circle(svg,60,cy,13,'#4fc3f7');
+    txt(svg,52,cy+5,'X'+(i+1),'#4fc3f7',11);
+    circle(svg,310,cy,14,'#81d4fa');
+    txt(svg,301,cy+5,'y'+(i+1),'#81d4fa',11);
+    line(svg,73,cy,296,cy,'rgba(79,195,247,0.4)');
+    line(svg,324,cy,546,252,'rgba(129,212,250,0.25)');
+  }
+  circle(svg,575,252,30,'#ff8a80',2.5);
+  txt(svg,557,247,'Σ Vᵢyᵢ','#ff8a80',13);
+  txt(svg,562,264,'y final','#a5d6a7',12);
+  line(svg,605,252,648,252,'#ff8a80',2);
+  var arr=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  arr.setAttribute('points','648,246 660,252 648,258');
+  arr.setAttribute('fill','#ff8a80');
+  svg.appendChild(arr);
+  txt(svg,330,340,'Vᵢ = 1/15 ≈ 0.067','#aaa',13);
+}
+
+function line(svg,x1,y1,x2,y2,stroke,sw,dash){
+  var l=document.createElementNS('http://www.w3.org/2000/svg','line');
+  l.setAttribute('x1',x1);l.setAttribute('y1',y1);
+  l.setAttribute('x2',x2);l.setAttribute('y2',y2);
+  l.setAttribute('stroke',stroke||'#fff');
+  l.setAttribute('stroke-width',sw||1);
+  if(dash) l.setAttribute('stroke-dasharray',dash);
+  svg.appendChild(l);
+}
+function txt(svg,x,y,t,fill,fs,anchor){
+  var el=document.createElementNS('http://www.w3.org/2000/svg','text');
+  el.setAttribute('x',x);el.setAttribute('y',y);
+  el.setAttribute('font-family','Caveat,cursive');
+  el.setAttribute('font-size',fs||14);
+  el.setAttribute('fill',fill||'#fff');
+  if(anchor) el.setAttribute('text-anchor',anchor);
+  el.textContent=t;
+  svg.appendChild(el);
+}
+function circle(svg,cx,cy,r,stroke,sw){
+  var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  c.setAttribute('cx',cx);c.setAttribute('cy',cy);c.setAttribute('r',r);
+  c.setAttribute('fill','none');c.setAttribute('stroke',stroke||'#fff');
+  c.setAttribute('stroke-width',sw||1.5);
+  svg.appendChild(c);
+}
+</script>
+</body>
+</html>
